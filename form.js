@@ -34,7 +34,9 @@ document.getElementById("login-div").style.display="inline";
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
  .then((userCredential) => {
    const user = userCredential.user;
-   window.location.assign("Dashboard.html");
+   document.getElementById("result-box").style.display="inline";
+    document.getElementById("login-div").style.display="none";
+    document.getElementById("result").innerHTML="Welcome Back<br>"+loginEmail+" was Login Successfully";
  })
  .catch((error) => {
    const errorCode = error.code;
@@ -70,8 +72,9 @@ document.getElementById("login-div").style.display="inline";
 
 
 document.getElementById("log-out-btn").addEventListener('click', function(){
- signOut(auth).then(() => {     
-      window.location.assign("index.html");
+ signOut(auth).then(() => {
+    document.getElementById("result-box").style.display="none";
+      document.getElementById("login-div").style.display="inline";
  }).catch((error) => {
     document.getElementById("result").innerHTML="Sorry ! <br>"+errorMessage;
  });
