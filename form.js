@@ -33,9 +33,8 @@ document.getElementById("login-div").style.display="inline";
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
  .then((userCredential) => {
-      const user = userCredential.user;
-      document.getElementById("wrapper").style.display="inline";
-      document.getElementById("login-div").style.display="none";
+   const user = userCredential.user;
+   window.location.assign("Dashboard.html");
  })
  .catch((error) => {
    const errorCode = error.code;
@@ -56,8 +55,9 @@ document.getElementById("login-div").style.display="inline";
   createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
  .then((userCredential) => {
    const user = userCredential.user;
-   document.getElementById("wrapper").style.display="inline";
-     document.getElementById("register-div").style.display="none";
+   document.getElementById("result-box").style.display="inline";
+    document.getElementById("register-div").style.display="none";
+    document.getElementById("result").innerHTML="Welcome <br>"+registerEmail+" was Registered Successfully";
  }).catch((error) => {
    const errorCode = error.code;
    const errorMessage = error.message;
@@ -71,8 +71,7 @@ document.getElementById("login-div").style.display="inline";
 
 document.getElementById("log-out-btn").addEventListener('click', function(){
  signOut(auth).then(() => {     
-      document.getElementById("wrapper").style.display="none";
-      document.getElementById("login-div").style.display="inline";
+      window.location.assign("index.html");
  }).catch((error) => {
     document.getElementById("result").innerHTML="Sorry ! <br>"+errorMessage;
  });
