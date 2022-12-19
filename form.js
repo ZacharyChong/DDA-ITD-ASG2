@@ -71,7 +71,6 @@ document.getElementById("login-div").style.display="inline";
 document.getElementById("log-out-btn").addEventListener('click', function(){
  signOut(auth).then(() => {     
       window.location.assign("index.html");
-      document.getElementById("login-div").style.display="inline";
  }).catch((error) => {
     document.getElementById("result").innerHTML="Sorry ! <br>"+errorMessage;
  });
