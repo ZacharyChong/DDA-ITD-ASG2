@@ -33,9 +33,7 @@ document.getElementById("log-btn").addEventListener('click', function(){
    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
   .then((userCredential) => {
     const user = userCredential.user;
-    document.getElementById("result-box").style.display="inline";
-     document.getElementById("login-div").style.display="none";
-     document.getElementById("result").innerHTML="Welcome Back<br>"+loginEmail+" was Login Successfully";
+      window.location.assign("Dashboard.html");
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -56,9 +54,7 @@ document.getElementById("log-btn").addEventListener('click', function(){
    createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
   .then((userCredential) => {
     const user = userCredential.user;
-    document.getElementById("result-box").style.display="inline";
-     document.getElementById("register-div").style.display="none";
-     document.getElementById("result").innerHTML="Welcome <br>"+registerEmail+" was Registered Successfully";
+    window.location.assign("Dashboard.html");
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -72,8 +68,7 @@ document.getElementById("log-btn").addEventListener('click', function(){
 
 document.getElementById("log-out-btn").addEventListener('click', function(){
   signOut(auth).then(() => {
-     document.getElementById("result-box").style.display="none";
-       document.getElementById("login-div").style.display="inline";
+      window.location.assign("index.html");
   }).catch((error) => {
      document.getElementById("result").innerHTML="Sorry ! <br>"+errorMessage;
   });
