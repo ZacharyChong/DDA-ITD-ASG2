@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDpf8kONko7b6DNT6Rfy6ax3pRjPNxTM-0",
@@ -32,8 +33,9 @@ document.getElementById("login-div").style.display="inline";
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
  .then((userCredential) => {
-   const user = userCredential.user;
-   window.location.assign("Dashboard.html");
+      const user = userCredential.user;
+      document.getElementById("wrapper").style.display="inline";
+      document.getElementById("login-div").style.display="none";
  })
  .catch((error) => {
    const errorCode = error.code;
@@ -54,9 +56,8 @@ document.getElementById("login-div").style.display="inline";
   createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
  .then((userCredential) => {
    const user = userCredential.user;
-   document.getElementById("result-box").style.display="inline";
-    document.getElementById("register-div").style.display="none";
-    document.getElementById("result").innerHTML="Welcome <br>"+registerEmail+" was Registered Successfully";
+   document.getElementById("wrapper").style.display="inline";
+     document.getElementById("register-div").style.display="none";
  }).catch((error) => {
    const errorCode = error.code;
    const errorMessage = error.message;
@@ -70,7 +71,8 @@ document.getElementById("login-div").style.display="inline";
 
 document.getElementById("log-out-btn").addEventListener('click', function(){
  signOut(auth).then(() => {     
-      window.location.assign("index.html");
+      document.getElementById("wrapper").style.display="none";
+      document.getElementById("login-div").style.display="inline";
  }).catch((error) => {
     document.getElementById("result").innerHTML="Sorry ! <br>"+errorMessage;
  });

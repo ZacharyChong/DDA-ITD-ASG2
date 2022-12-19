@@ -11,6 +11,23 @@
     <link rel="stylesheet" href="style.css">
     <title>ITD DDA ASG2 Dashboard</title>
     <script type="module" src="form.js"></script>
+    <script>
+        var lvl0PlayerStats = firebase.database().child("lvl0playerStats");
+        lvl0PlayerStats.on("value", function(lvl0){
+            if(lvl0.exists())
+            {
+                var lvl0Html = "";
+                //lvl0.forEach(function(singleLvl0))
+                //{
+                //    lvl0Html += "<div class='row'>";
+                //        lvl0Html += "<div class='content'>"
+                        
+                //    lvl0Html += "</div><br>"    
+                //}
+            }
+        })
+    </script>
+    
 </head>
 
 <body>
