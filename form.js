@@ -32,7 +32,10 @@ document.getElementById("login-div").style.display="inline";
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
  .then((userCredential) => {
-      window.location.href = "Dashboard.html";
+   const user = userCredential.user;
+   document.getElementById("result-box").style.display="inline";
+    document.getElementById("login-div").style.display="none";
+    document.getElementById("result").innerHTML="Welcome Back<br>"+loginEmail+" was Login Successfully";
  })
  .catch((error) => {
    const errorCode = error.code;
