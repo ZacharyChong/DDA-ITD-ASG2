@@ -32,7 +32,8 @@ document.getElementById("login-div").style.display="inline";
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
  .then((userCredential) => {
-      window.location.href = "Dashboard.html";
+   const user = userCredential.user;
+   window.location.assign("Dashboard.html");
  })
  .catch((error) => {
    const errorCode = error.code;
