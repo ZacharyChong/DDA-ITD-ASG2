@@ -11,39 +11,9 @@
     <link rel="stylesheet" href="style.css">
     <title>ITD DDA ASG2 Dashboard</title>
     <script type="module" src="form.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-    </script>
 </head>
 
 <body>
-    <script type="module">   
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyDpf8kONko7b6DNT6Rfy6ax3pRjPNxTM-0",
-          authDomain: "itd-dda-asg2-71840.firebaseapp.com",
-          databaseURL: "https://itd-dda-asg2-71840-default-rtdb.asia-southeast1.firebasedatabase.app",
-          projectId: "itd-dda-asg2-71840",
-          storageBucket: "itd-dda-asg2-71840.appspot.com",
-          messagingSenderId: "365650969855",
-          appId: "1:365650969855:web:3d45b9ffd8eaa448ef38ca"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        var lvl0Ref = firebase.database().ref(lvl0playerStats);
-        lvl0Ref.on("value", function(snapshot){
-            snapshot.forEach(function(element){
-                document.querySelector('#root').innerHTML = `
-                    <div>${element.val()}</div>
-                `
-            })
-        })
-     </script>
     <div class="d-flex" id="wrapper">
 
         <div id="page-content-wrapper">
