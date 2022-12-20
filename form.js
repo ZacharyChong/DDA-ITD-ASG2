@@ -18,13 +18,6 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getDatabase();
-
-  firebase.database().ref().child("lvl0playerStats").orderByChild("userName").equalTo("markiplier").once("value", function (snapshot) {
-      var playerLvl0HighScore = document.getElementById("lvl0HighScore");
-      var content = "";
-      content +=`${childSnapshot.child("lvl0HighScore").val()}`
-      playerLvl0HighScore.innerHTML = content;
-      });
       
   document.getElementById("reg-btn").addEventListener('click', function(){
    document.getElementById("register-div").style.display="inline";
@@ -85,3 +78,10 @@ document.getElementById("log-out-btn").addEventListener('click', function(){
   });
 
 });
+
+firebase.database().ref().child("lvl0playerStats").orderByChild("userName").equalTo("markiplier").once("value", function (snapshot) {
+  var playerLvl0HighScore = document.getElementById("lvl0HighScore");
+  var content = "";
+  content +=`${childSnapshot.child("lvl0HighScore").val()}`
+  playerLvl0HighScore.innerHTML = content;
+  });
