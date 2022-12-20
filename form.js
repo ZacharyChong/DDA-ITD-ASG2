@@ -1,20 +1,31 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword,  createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
-  const firebaseConfig = {
+import {
+  getDatabase, ref, child, get, set, onValue, orderByChild
+  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+const firebaseConfig = {
     apiKey: "AIzaSyDpf8kONko7b6DNT6Rfy6ax3pRjPNxTM-0",
     authDomain: "itd-dda-asg2-71840.firebaseapp.com",
-    databaseURL: "https://itd-dda-asg2-71840-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "itd-dda-asg2-71840",
     storageBucket: "itd-dda-asg2-71840.appspot.com",
     messagingSenderId: "365650969855",
-    appId: "1:365650969855:web:3d45b9ffd8eaa448ef38ca"
+    appId: "1:365650969855:web:3d45b9ffd8eaa448ef38ca",
+    databaseURL: "https://itd-dda-asg2-71840-default-rtdb.asia-southeast1.firebasedatabase.app/",
   };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getDatabase();
 
-
+  firebase.database().ref().child("lvl0playerStats").orderByChild("userName").equalTo("markiplier").once("value", function (snapshot) {
+      var playerLvl0HighScore = document.getElementById("lvl0HighScore");
+      var content = "";
+      content +=`${childSnapshot.child("lvl0HighScore").val()}`
+      playerLvl0HighScore.innerHTML = content;
+      });
+      
   document.getElementById("reg-btn").addEventListener('click', function(){
    document.getElementById("register-div").style.display="inline";
    document.getElementById("login-div").style.display="none";
